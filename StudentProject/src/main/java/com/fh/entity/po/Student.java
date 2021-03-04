@@ -14,11 +14,13 @@ public class Student {
 
     private  Integer sex; // 0 女 1 男
 
+     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd ")
     private  Date  birthday; // 生日
 
     private  Integer  score; // 分数
 
-    private  Integer  hobby;  //  爱好 1 吃  2 喝  3 玩  4 乐
+    private  String  hobby;  //  爱好 1 吃  2 喝  3 玩  4 乐
 
     public Integer getId() {
         return id;
@@ -60,11 +62,11 @@ public class Student {
         this.score = score;
     }
 
-    public Integer getHobby() {
+    public String getHobby() {
         return hobby;
     }
 
-    public void setHobby(Integer hobby) {
+    public void setHobby(String hobby) {
         this.hobby = hobby;
     }
 }
