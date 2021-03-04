@@ -3,10 +3,7 @@ package com.fh.controller;
 import com.fh.model.User;
 import com.fh.service.UserSerivce;
 import com.fh.utils.MD5Util;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -16,6 +13,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/user")
+@CrossOrigin
 public class UserController {
 
         @Resource
@@ -30,12 +28,17 @@ public class UserController {
             String encoder1 = MD5Util.encoder(password);
             String encoder2 = (encoder+encoder1);
             User user = userSerivce.selectNameOne(name);
-            if(user.getPassword().equals(encoder2)){
-                //登录成功
-                map.put("code",200);
+            if(user == null){
+                //帐号不存在
+                map.put("code",202);
             }else{
-                //账号不存在或者密码不正确
-                map.put("code",201);
+                if(user.getPassword().equals(encoder2)){
+                    //登录成功
+                    map.put("code",200);
+                }else{
+                    //密码不正确
+                    map.put("code",201);
+                }
             }
             return map;
         }

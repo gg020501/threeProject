@@ -13,13 +13,5 @@
         <module name="YewuFuwu" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="EurekaOne" target="1.7" />
-      <module name="LogProject" target="1.7" />
-      <module name="StudentProject" target="1.7" />
-      <module name="threeProject" target="1.8" />
-      <module name="UserProject" target="1.7" />
-      <module name="YewuFuwu" target="1.7" />
-    </bytecodeTargetLevel>
   </component>
 </project>
